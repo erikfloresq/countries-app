@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react';
+import style from './App.module.css';
+import Card from './components/Card';
+import getCountries from './countries';
+
 
 function App() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+      (async () => {
+        const json = await getCountries()
+        setData(json)
+      })();
+
+      return () => {
+
+      };
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={style.root}>
+      <h2 className={style.header}>
+        <h1>Where in the world?</h1>
+        <button className={style.button}>
+          Dark Mode
+        </button>
+      </h2>
+      <main className={style.main}>
+        {data.map((country) =>  
+          <Card country={country} />
+        )}
+      </main>
     </div>
   );
 }
