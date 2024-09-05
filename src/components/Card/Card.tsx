@@ -6,10 +6,10 @@ interface ICountry {
     country: Country
 }
 
-const Card = ({ country }: ICountry) => {
+const Card: React.FC<ICountry> = ({ country }) => {
     return (
         <div className="card">
-            <img src={country.image} alt="" />
+            <img src={country.image} alt={country.name} />
             <div className="detail">
                 <h2 className="title">{country.name}</h2>
                 <ul className="items">

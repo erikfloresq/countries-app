@@ -3,10 +3,10 @@ import "./Search.css";
 
 interface ISearch {
   text: string,
-  onChange(event: any): any
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const Search = ({ text, onChange }: ISearch) => {
+const Search: React.FC<ISearch> = ({ text, onChange }) => {
   return (
     <form className='search'>
         <label>🔍</label>

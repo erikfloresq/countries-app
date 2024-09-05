@@ -3,7 +3,7 @@ import "./Filter.css"
 
 interface IFilter {
     selectedRegion: string,
-    onChange(event: any): any
+    onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
 const Filter = ({ selectedRegion, onChange }: IFilter) => {
