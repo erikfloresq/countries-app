@@ -1,9 +1,11 @@
-import axios from "axios";
+import axios from 'axios';
+import type { CountryResponse } from '../models/CountryResponse';
+import type { Country } from '../models/Country';
 
-async function getCountries() {
+const getCountries = async () => {
     let response = await axios.get("https://restcountries.com/v3.1/all")
-    const countriesResponse = response.data.map (
-        (country) => {
+    const countries: [Country] = response.data.map (
+        (country: CountryResponse) => {
             return {
                 image: country.flags.png,
                 name: country.name.common,
@@ -13,7 +15,7 @@ async function getCountries() {
             }
         }
     );
-    return countriesResponse
+    return countries
 }
 
 export default getCountries;
