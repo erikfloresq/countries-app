@@ -6,7 +6,7 @@ interface IFilter {
     onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
 }
 
-const Filter = ({ selectedRegion, onChange }: IFilter) => {
+const Filter: React.FC<IFilter> = ({ selectedRegion, onChange }) => {
     return (
         <div>
             <select 
