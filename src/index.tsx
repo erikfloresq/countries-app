@@ -1,15 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import './index.css';
 import App from './app/App';
 import reportWebVitals from './reportWebVitals';
+import ErrorPage from './error-page';
+import Detail, { loader as detailLoader } from './pages/Detail';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "detail/:countryName",
+    id: "detail",
+    element: <Detail/>,
+    loader: detailLoader
+  }
+]);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

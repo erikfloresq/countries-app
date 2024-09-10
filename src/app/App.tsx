@@ -3,8 +3,9 @@ import './App.css';
 import Card from '../components/Card/Card';
 import Search from '../components/Search/Search';
 import Filter from '../components/Filter/Filter';
-import getCountries from './countries';
+import { getCountries } from './countries';
 import type { Country }  from '../models/Country';
+import { Link } from 'react-router-dom';
 
 function App() {
   const [countries, setCountries] = useState<Country[]>([]);
@@ -36,8 +37,11 @@ function App() {
             .filter((country) =>
               country.name.toLowerCase().includes(searchText)
             )
-            .map((country) =>  
-              <Card country={country} />
+            .map((country) =>
+              <Link to={ `detail/${country.name.toLowerCase()}` }>
+                <Card country={country} />
+              </Link>
+              
             )
         }
       </main>

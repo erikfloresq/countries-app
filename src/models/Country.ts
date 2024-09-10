@@ -4,4 +4,7 @@ export interface Country {
     population: string;
     region: string;
     capital: string;
+    flag?: string;
+    timezones?: string;
+    borders?: string[];
 }
