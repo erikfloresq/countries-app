@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Search.css";
+import styles from "./Search.module.css";
 
 interface ISearch {
   text: string,
@@ -8,10 +8,10 @@ interface ISearch {
 
 const Search: React.FC<ISearch> = ({ text, onChange }) => {
   return (
-    <form className='search'>
+    <form className={styles.search}>
         <label>🔍</label>
         <input 
-          className='search-input'
+          className={styles.searchInput}
           type="search"
           placeholder='Search for a country...'
           value={text}
