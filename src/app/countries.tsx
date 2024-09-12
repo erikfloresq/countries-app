@@ -28,9 +28,11 @@ export const getCountry = async (countryName: string): Promise<Country[]> => {
                 name: country.name.common,
                 population: country.population,
                 region: country.region,
+                subregion: country.subregion,
                 capital: country.capital,
-                flag: country.flag,
-                timezones: country.timezones,
+                tld: country.tld,
+                currencies: Object.values(country.currencies).map((currency) => currency.name),
+                languages: Object.values(country.languages).map((language) => language),
                 borders: country.borders
             }
         }

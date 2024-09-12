@@ -6,13 +6,20 @@ interface Name {
     common: string
 }
 
+interface Currency {
+    name: string;
+    symbol: string;
+}
+
 export interface CountryDetailResponse {
     flags: Flag;
     name: Name;
     population: string;
     region: string;
+    subregion: string;
     capital: string;
-    flag: string;
-    timezones: string;
+    tld: string,
+    currencies: Record<string, Partial<Currency>>,
+    languages: Record<string, string>,
     borders: string[];
 }

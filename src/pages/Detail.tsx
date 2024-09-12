@@ -12,12 +12,6 @@ export const loader = async ({ params }: any) => {
 const Detail = () => {
     const country = useRouteLoaderData('detail') as Country;
 
-    let borders = country.borders?.map((border) => (
-        <li key={border}>
-            {border}
-        </li>
-    ));
-
     return (
         <div className={styles.detailRoot}>
             <div className={styles.detailContainer}>
@@ -44,7 +38,7 @@ const Detail = () => {
                                 </li>
                                 <li>
                                     <label>Sub Region:</label>
-                                    Sub Region
+                                    {country.subregion}
                                 </li>
                                 <li>
                                     <label>Capital:</label>
@@ -54,22 +48,26 @@ const Detail = () => {
                             <ul className={styles.column}>
                                 <li>
                                     <label>Top Level Domain:</label>
-                                    top
+                                    {country.tld}
                                 </li>
                                 <li>
                                     <label>Currencies:</label>
-                                    Currencies
+                                    {country.currencies?.join(", ")}
                                 </li>
                                 <li>
                                     <label>Languages:</label>
-                                    Languages
+                                    {country.languages?.join(", ")}
                                 </li>
                             </ul>
                         </div>
                         <div className={styles.borderContainer}>
                             <h2>Border Countries:</h2>
                             <ul>
-                                {borders}
+                                {country.borders?.map((border) => (
+                                    <li key={border}>
+                                        {border}
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                     </div>
