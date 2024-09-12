@@ -1,5 +1,5 @@
 import React from 'react';
-import './Card.css';
+import styles from './Card.module.css';
 import type { Country }  from '../../models/Country';
 
 interface ICountry {
@@ -8,11 +8,11 @@ interface ICountry {
 
 const Card: React.FC<ICountry> = ({ country }) => {
     return (
-        <div className="card">
+        <div className={styles.card}>
             <img src={country.image} alt={country.name} />
-            <div className="detail">
-                <h2 className="title">{country.name}</h2>
-                <ul className="items">
+            <div className={styles.detail}>
+                <h2 className={styles.title}>{country.name}</h2>
+                <ul className={styles.items}>
                     <li>
                         <label>Population:</label>
                         {country.population}

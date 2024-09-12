@@ -1,5 +1,5 @@
 import React from "react";
-import "./Filter.css"
+import styles from "./Filter.module.css"
 
 interface IFilter {
     selectedRegion: string,
@@ -8,7 +8,7 @@ interface IFilter {
 
 const Filter: React.FC<IFilter> = ({ selectedRegion, onChange }) => {
     return (
-        <div>
+        <div className={styles.selectContainer}>
             <select 
                 value={selectedRegion}
                 onChange={onChange}
