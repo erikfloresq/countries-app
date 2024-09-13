@@ -6,6 +6,7 @@ export interface Country {
     subregion: string;
     capital: string;
     tld?: string,
+    ccn3: string,
     currencies?: string[],
     languages?: string[],
     borders?: string[];

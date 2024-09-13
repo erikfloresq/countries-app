@@ -36,7 +36,7 @@ const ListCountries = () => {
                     country.name.toLowerCase().includes(searchText)
                     )
                     .map((country) =>
-                    <Link key={country.name.toLowerCase()} to={ `detail/${country.name.toLowerCase()}` }>
+                    <Link key={country.ccn3?.toLowerCase()} to={ `detail/${country.ccn3?.toLowerCase()}` }>
                         <Card country={country} />
                     </Link>
                     

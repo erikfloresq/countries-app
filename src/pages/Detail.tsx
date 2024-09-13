@@ -3,9 +3,10 @@ import { Link, useRouteLoaderData } from "react-router-dom";
 import { getCountry } from '../app/countries';
 import type { Country } from '../models/Country';
 import styles from "./Detail.module.css";
+import { relative } from "path";
 
 export const loader = async ({ params }: any) => {
-    const country = await getCountry(params.countryName);
+    const country = await getCountry(params.countryCode);
     return country[0];
 }
 
@@ -65,7 +66,7 @@ const Detail = () => {
                             <ul>
                                 {country.borders?.map((border) => (
                                     <li key={border}>
-                                        {border}
+                                        <Link to={`../${border.toLowerCase()}`} relative="path">{border}</Link>
                                     </li>
                                 ))}
                             </ul>
