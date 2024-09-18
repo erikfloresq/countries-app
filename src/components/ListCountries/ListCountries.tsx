@@ -12,6 +12,7 @@ const ListCountries = () => {
     const [countries, setCountries] = useState<Country[]>([]);
     const [selectedRegion, setSelectedRegion] = useState<string>("");
     const [searchText, setSearchText] = useState<string>("");
+    const [isLoading, setIsLoading] = useState<boolean>(true);
   
     useEffect(() => {
         (async () => {
@@ -19,10 +20,15 @@ const ListCountries = () => {
           setCountries(countriesResponse)
         })();
         return (() => {
-            
+            setTimeout(() => {
+                setIsLoading(false)
+            }, 1000)
         });
     }, []);
 
+    if(isLoading) {
+        return <div className={styles.loading}>Loading ...</div>
+    }
     return (
         <div>
             <div className={styles.menu}>
