@@ -10,6 +10,29 @@ export const loader = async ({ params }: any) => {
     return country[0];
 }
 
+interface ICountry {
+    country: Country
+}
+
+const BorderCountry: React.FC<ICountry> = ({ country }) => {
+    if(country.borders == null) {
+        return <div></div>
+    } else {
+        return (
+            <div className={styles.borderContainer}>
+                <h2>Border Countries:</h2>
+                <ul>
+                    {country.borders?.map((border) => (
+                        <li key={border}>
+                            <Link to={`../${border.toLowerCase()}`} relative="path">{border}</Link>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        );
+    }
+}
+
 const Detail = () => {
     const country = useRouteLoaderData('detail') as Country;
 
@@ -61,16 +84,7 @@ const Detail = () => {
                                 </li>
                             </ul>
                         </div>
-                        <div className={styles.borderContainer}>
-                            <h2>Border Countries:</h2>
-                            <ul>
-                                {country.borders?.map((border) => (
-                                    <li key={border}>
-                                        <Link to={`../${border.toLowerCase()}`} relative="path">{border}</Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                        <BorderCountry country={country} />
                     </div>
                 </div>
             </div>

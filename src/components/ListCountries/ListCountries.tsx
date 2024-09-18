@@ -18,6 +18,9 @@ const ListCountries = () => {
           const countriesResponse = await getCountries()
           setCountries(countriesResponse)
         })();
+        return (() => {
+            
+        });
     }, []);
 
     return (
