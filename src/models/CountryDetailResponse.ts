@@ -19,6 +19,7 @@ export interface CountryDetailResponse {
     subregion: string;
     capital: string;
     tld: string;
+    cca2: string;
     ccn3: string;
     currencies: Record<string, Partial<Currency>>;
     languages: Record<string, string>;
