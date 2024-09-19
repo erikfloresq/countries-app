@@ -20,9 +20,7 @@ const ListCountries = () => {
           setCountries(countriesResponse)
         })();
         return (() => {
-            setTimeout(() => {
-                setIsLoading(false)
-            }, 1000)
+            setIsLoading(false)
         });
     }, []);
 
