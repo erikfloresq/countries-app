@@ -26,31 +26,32 @@ const ListCountries = () => {
 
     if(isLoading) {
         return <div className={styles.loading}>Loading ...</div>
-    }
-    return (
-        <div>
-            <div className={styles.menu}>
-                <Search text={searchText} onChange={(e)=>{setSearchText(e.target.value)}}></Search>
-                <Filter selectedRegion={selectedRegion} onChange={(e)=>{setSelectedRegion(e.target.value)}}></Filter>
+    } else {
+        return (
+            <div>
+                <div className={styles.menu}>
+                    <Search text={searchText} onChange={(e)=>{setSearchText(e.target.value)}}></Search>
+                    <Filter selectedRegion={selectedRegion} onChange={(e)=>{setSelectedRegion(e.target.value)}}></Filter>
+                </div>
+                <main className={styles.countriesList}>
+                    {
+                    countries
+                        .filter((country) =>
+                        country.region.toLowerCase().includes(selectedRegion)
+                        )
+                        .filter((country) =>
+                        country.name.toLowerCase().includes(searchText)
+                        )
+                        .map((country) =>
+                        <Link key={country.cca2.toLowerCase()} to={ `detail/${country.ccn3?.toLowerCase()}` }>
+                            <Card country={country} />
+                        </Link>
+                        )
+                    }
+                </main>
             </div>
-            <main className={styles.countriesList}>
-                {
-                countries
-                    .filter((country) =>
-                    country.region.toLowerCase().includes(selectedRegion)
-                    )
-                    .filter((country) =>
-                    country.name.toLowerCase().includes(searchText)
-                    )
-                    .map((country) =>
-                    <Link key={country.cca2.toLowerCase()} to={ `detail/${country.ccn3?.toLowerCase()}` }>
-                        <Card country={country} />
-                    </Link>
-                    )
-                }
-            </main>
-        </div>
-    );
+        );
+    }
 }
 
 export default ListCountries;
