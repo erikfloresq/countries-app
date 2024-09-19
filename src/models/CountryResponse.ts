@@ -12,5 +12,6 @@ export interface CountryResponse {
     population: string;
     region: string;
     capital: string;
+    cca2: string;
     ccn3: string;
 }

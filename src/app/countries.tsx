@@ -2,7 +2,6 @@ import axios from 'axios';
 import type { CountryResponse } from '../models/CountryResponse';
 import type { CountryDetailResponse } from '../models/CountryDetailResponse';
 import type { Country } from '../models/Country';
-import { count } from 'console';
 
 export const getCountries = async (): Promise<Country[]>  => {
     let response = await axios.get("https://restcountries.com/v3.1/all")
@@ -14,6 +13,7 @@ export const getCountries = async (): Promise<Country[]>  => {
                 population: country.population,
                 region: country.region,
                 capital: country.capital,
+                cca2: country.cca2,
                 ccn3: country.ccn3
             }
         }
@@ -33,6 +33,7 @@ export const getCountry = async (countryCode: string): Promise<Country[]> => {
                 subregion: country.subregion,
                 capital: country.capital,
                 tld: country.tld,
+                cca2: country.cca2,
                 ccn3: country.ccn3,
                 currencies: Object.values(country.currencies).map((currency) => currency.name),
                 languages: Object.values(country.languages).map((language) => language),

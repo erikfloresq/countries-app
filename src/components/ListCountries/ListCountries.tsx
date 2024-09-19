@@ -20,9 +20,7 @@ const ListCountries = () => {
           setCountries(countriesResponse)
         })();
         return (() => {
-            setTimeout(() => {
-                setIsLoading(false)
-            }, 1000)
+            setIsLoading(false)
         });
     }, []);
 
@@ -45,10 +43,9 @@ const ListCountries = () => {
                     country.name.toLowerCase().includes(searchText)
                     )
                     .map((country) =>
-                    <Link key={country.ccn3?.toLowerCase()} to={ `detail/${country.ccn3?.toLowerCase()}` }>
+                    <Link key={country.cca2.toLowerCase()} to={ `detail/${country.ccn3?.toLowerCase()}` }>
                         <Card country={country} />
                     </Link>
-                    
                     )
                 }
             </main>
